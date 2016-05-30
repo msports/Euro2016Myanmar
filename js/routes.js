@@ -7,8 +7,8 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
+
+
 
       .state('tabsController.match', {
     url: '/match',
@@ -35,7 +35,7 @@ angular.module('app.routes', [])
     views: {
       'tab3': {
         templateUrl: 'templates/video.html',
-        controller: 'videoCtrl'
+        controller: 'goalCtrl'
       }
     }
   })
@@ -74,6 +74,6 @@ angular.module('app.routes', [])
 
 $urlRouterProvider.otherwise('/page1/match')
 
-  
+
 
 });
