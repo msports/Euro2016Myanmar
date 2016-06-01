@@ -1,0 +1,7 @@
+<ion-view title="Star Wars Films">
+    <ion-content overflow-scroll="true" padding="false" class="has-header">
+        <ion-list>
+			<ion-item ng-repeat="team in teams" ui-sref="teamName({id:team.players})">{{team.name}}</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -12,12 +12,20 @@
                 </select>
             </label>
         </form>
-        <ion-list id="team-list3" class=" ">
+        <!--ion-list>
+          <ion-item ng-repeat="team in teams">
+             <img src="{{team.flag}}" alt="teamflag" />
+             <h4>{{team.name}}</h4>
+          </ion-item>
+        </ion-list-->
+        <ion-list id="team-list3" ng-repeat="team in teams">
             <ion-item class="item-avatar  teamlist" id="team-list-item11" ui-sref="tabsController.player">
-                <img src="img/y9dJbZWxTIKB3OUCpX87_arsenal.png">
-                <h2>Arsenal</h2>
+              <div class="row">
+                <div class="col .col-33"><img ng-src="{{team.flag}}" class="teamImage" ></div>
+                <div class="col .col-75" style="text-align:center;"><h2>{{team.name}}</h2></div>
+              </div>
             </ion-item>
-            <ion-item class="item-avatar  teamlist" id="team-list-item20" ui-sref="tabsController.player">
+            <!--ion-item class="item-avatar  teamlist" id="team-list-item20" ui-sref="tabsController.player">
                 <img src="img/y9dJbZWxTIKB3OUCpX87_arsenal.png">
                 <h2>Arsenal</h2>
             </ion-item>
@@ -28,7 +36,7 @@
             <ion-item class="item-avatar  teamlist" id="team-list-item21" ui-sref="tabsController.player">
                 <img src="img/y9dJbZWxTIKB3OUCpX87_arsenal.png">
                 <h2>Arsenal</h2>
-            </ion-item>
+            </ion-item-->
         </ion-list>
     </ion-content>
 </ion-view>

@@ -1,7 +1,42 @@
 <ion-view title="Standing" id="page3" class=" ">
     <ion-content padding="false" class="has-header">
-        <form id="standing-form1" class="list ">
-            <label class="item item-select " id="standing-select1" name="choice">
+        <div class="list " >
+             <div class="row item item-divider">
+                <div class="col col-33">Team</div>
+                <div class="col">Match</div>
+                <div class="col">W</div>
+                <div class="col" style="color:red">L</div>
+                <div class="col">P</div>
+              </div>
+
+          <ion-item id="standing-list-item8" ng-repeat="stand in standings['Group A'] |orderBy:'team.position'">
+              <h2>
+                  <div class="row">
+                      <div class="col col-33">{{stand.team}}</div>
+                      <div class="col">{{stand.stats.macthes_played}}</div>
+                      <div class="col">{{stand.stats.wins}}</div>
+                      <div class="col">{{stand.stats.losts}}</div>
+                      <div class="col">{{stand.stats.points}}</div>
+                  </div>
+              </h2>
+          </ion-item>
+        </div>
+        <div class="list " >
+          <ion-item id="standing-list-item8" ng-repeat="stand in standings['Group B']">
+              <h2>
+                <div class="row">
+                    <div class="col col-33">{{stand.team}}</div>
+                    <div class="col">{{stand.stats.macthes_played}}</div>
+                    <div class="col">{{stand.stats.wins}}</div>
+                    <div class="col">{{stand.stats.losts}}</div>
+                    <div class="col">{{stand.stats.points}}</div>
+                </div>
+              </h2>
+          </ion-item>
+        </div>
+    </ion-content>
+</ion-view>
+            <!--label class="item item-select " id="standing-select1" name="choice">
                 <span class="input-label">Select League</span>
                 <select>
                     <option>Premier League</option>
@@ -45,7 +80,4 @@
                         <div class="col">70</div>
                     </div>
                 </h2>
-            </ion-item>
-        </form>
-    </ion-content>
-</ion-view>
+            </ion-item-->

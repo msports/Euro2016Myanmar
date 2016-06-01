@@ -1,14 +1,17 @@
 angular.module('app.controllers', [])
 
-.controller('matchCtrl', ['$scope', 'matches', function($scope, matches) {
+.controller('matchCtrl', ['$scope', 'matches', function($scope, matches, LoadingService) {
+
   matches.success(function(data) {
     $scope.matches = data.data.matches;
+
   })
 }])
 
 .controller('standingCtrl', ['$scope', 'standings', function($scope, standings) {
   standings.success(function(data) {
     $scope.standings = data.data.standings;
+    LoadingService.hide();
   })
 }])
 
@@ -18,7 +21,7 @@ angular.module('app.controllers', [])
   })
 }])
 
-.controller('goalCtrl', function($scope, $sce, goalService) {
+.controller('goalCtrl', function($scope, $sce, goalService, LoadingService) {
 
   $scope.isGoalVideo = function (item) {
     if((item.data.title.indexOf(" goal ") > 0 || item.data.title.indexOf("score") > 0) &&
@@ -56,12 +59,10 @@ angular.module('app.controllers', [])
 
   $scope.getGoals = function () {
     goalService.getGoals().then(function (response) {
+      LoadingService.hide();
       $scope.goals = response.data.data.children;
     }, function (error) {
-      $ionicLoading.show({
-        template: 'Failed to get goals',
-        duration: '1000'
-      });
+
     });
   };
 
@@ -78,5 +79,22 @@ angular.module('app.controllers', [])
 })
 
 .controller('pageCtrl', function($scope) {
+
+})
+.controller('starWarsFilmsCtrl', function($scope,FilmService) {
+	$scope.films = [];
+
+	FilmService.getFilms().then(function(res) {
+		$scope.films = res;
+	});
+
+})
+
+.controller('filmTitleCtrl', function($scope,$stateParams,FilmService) {
+	$scope.film = {};
+
+	FilmService.getFilm($stateParams.id).then(function(res) {
+		$scope.film = res;
+	});
 
 })
